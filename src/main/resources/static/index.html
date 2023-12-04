@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="header-container">
+    <img src="TaskForge.png" alt="Task Forge Logo" id="logo">
+    <h1>Task Forge</h1>
+</div>
+<div id="form-container">
+    <form id="createTaskForm" method="post">
+        <h3>Create Task</h3>
+        <input type="text" id="title" name="title" required="required" placeholder="Title.">
+
+        <textarea id="description" name="description" required="required" placeholder="Description."></textarea>
+
+        <input type="date" id="dueDate" name="dueDate" required="required">
+
+        <select id="status" name="status" required="required">
+            <option value="TODO">TODO</option>
+            <option value="IN_PROGRESS">IN_PROGRESS</option>
+            <option value="TESTING">TESTING</option>
+            <option value="COMPLETED">COMPLETED</option>
+        </select>
+
+        <button class="create_button" type="submit">Create</button>
+    </form>
+</div>
+<div id="tasks-container"></div>
+<script src="script.js"></script>
+</body>
+</html>
