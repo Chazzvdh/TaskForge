@@ -41,10 +41,13 @@ body {
     }
 }
 
-#header-container {
+#header-container a{
     display: flex;
     flex-direction: row;
-    /*center*/
+
+    color: var(--text-color);
+    text-decoration: none;
+
     align-items: center;
     grid-area: header;
     height: 10vh;
@@ -94,7 +97,15 @@ form label {
 form input,
 form textarea,
 form select {
-    width: 100%;
+    width: 90%;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+}
+
+form textarea {
+    height: 100px;
 }
 
 form button {
@@ -163,8 +174,11 @@ form button {
     background: var(--scrollbar-thumb-hover-color);
 }
 
-#logo {
+.logo {
     width: 50px;
     height: 50px;
     margin-right: 10px;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    padding: 5px;
 }
