@@ -1,12 +1,9 @@
 :root {
     --main-bg-color: #1e1e1e;
     --secondary-bg-color: #505050;
-
     --text-color: white;
-
-    --accent-color: #b68c58;
+    --accent-color: #417081;
     --highlight-color: #e3e3e3;
-
     --scrollbar-track-color: var(--secondary-bg-color);
     --scrollbar-thumb-color: #d2d2d2;
     --scrollbar-thumb-hover-color: #b8b8b8;
@@ -16,29 +13,38 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#accentColor {
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    background: none;
+}
+
 body {
+    margin: 0;
+    color: var(--text-color);
+}
+
+#editTaskFormButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#main-container {
     display: grid;
     grid-template-areas:
     "header header"
     "form tasks";
     grid-template-rows: 10vh 1fr;
     grid-template-columns: 300px 3fr;
-    margin: 0;
     background-color: var(--main-bg-color);
-    color: var(--text-color);
     max-height: 100vh;
-    gap: 10px;
 }
 
 @media screen and (max-width: 600px) {
-    body {
-        grid-template-areas:
-      "header"
-      "form"
-      "tasks";
-        grid-template-rows: 10vh 1fr 3fr;
-        grid-template-columns: 1fr;
-    }
+
+
 }
 
 #header-container a{
@@ -56,21 +62,40 @@ body {
 
 #form-container {
     grid-area: form;
-    margin: 0 0 10px 10px;
+    margin: 0 10px 10px 10px;
     background-color: var(--secondary-bg-color);
     padding: 10px;
     border-radius: 3px;
+    align-content: center;
+    height: 87vh;
+    max-height: 87vh;
 }
 
-#createTaskForm {
+#createTaskForm,
+#settings-container{
     background-color: var(--main-bg-color);
     border-radius: 3px;
     padding: 10px;
-
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    align-items: center;
+    align-items: flex-start;
+}
+
+#settings-container {
+    display: block;
+}
+
+#editTaskForm {
+    background-color: var(--main-bg-color);
+    border: var(--accent-color) 1px solid;
+    border-radius: 3px;
+    padding: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 max(100vw, 100vh) rgba(0, 0, 0, 0.5);
 }
 
 #tasks-container {
@@ -84,10 +109,8 @@ body {
     margin: 0 10px 10px 0;
 }
 
-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+#edit-form-container {
+    z-index: -1;
 }
 
 form label {
@@ -102,18 +125,15 @@ form select {
     color: var(--text-color);
     border: none;
     padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
 }
 
 form textarea {
     height: 100px;
 }
 
-form button {
-    grid-column: 1;
-}
-
-.task,
-.create_button {
+.task{
     border-radius: 3px;
     padding: 10px;
     margin: 0 10px 10px 10px;
@@ -130,10 +150,12 @@ form button {
     margin: 5px 0;
 }
 
-.task .edit-button,
-.task .delete-button,
-.create_button {
+.task .button {
     margin-right: 10px;
+
+}
+
+.button {
     color: var(--accent-color);
     background-color: var(--main-bg-color);
     border: 1px solid var(--accent-color);
@@ -142,19 +164,12 @@ form button {
     transition: 0.2s ease-in-out;
 }
 
-.task .edit-button:hover,
-.task .delete-button:hover,
-.create_button:hover {
+.button:hover {
     background-color: var(--accent-color);
     color: var(--highlight-color);
     cursor: pointer;
 }
 
-.task-separator {
-    margin: 10px 0;
-    border: none;
-    border-top: 1px dashed var(--text-color);
-}
 
 /* Scrollbar Styles */
 ::-webkit-scrollbar {

@@ -56,4 +56,13 @@ public class TaskController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, taskNotFoundException.getMessage());
         }
     }
+
+    @PutMapping("/{id}")
+    public TaskResponse updateTask(@PathVariable Long id, @RequestBody TaskRequest taskRequest) {
+        try {
+            return TaskResponse.fromTask(taskService.updateTask(id, taskRequest));
+        } catch (TaskNotFoundException taskNotFoundException) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, taskNotFoundException.getMessage());
+        }
+    }
 }

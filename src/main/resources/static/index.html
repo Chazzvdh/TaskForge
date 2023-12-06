@@ -6,32 +6,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="header-container">
-    <a href="index.html">
-        <img src="TaskForge.svg" alt="Task Forge Logo" class="logo">
-        <h1>Task Forge</h1>
-    </a>
+<form id="editTaskForm" style="display: none;">
+    <h3>Edit Task</h3>
+    <input type="text" id="editTitle" name="title" required="required" placeholder="Title.">
+    <textarea id="editDescription" name="description" required="required" placeholder="Description."></textarea>
+    <input type="date" id="editDueDate" name="dueDate" required="required">
+    <select id="editStatus" name="status" required="required">
+        <option value="TODO">TODO</option>
+        <option value="IN_PROGRESS">IN_PROGRESS</option>
+        <option value="TESTING">TESTING</option>
+        <option value="COMPLETED">COMPLETED</option>
+    </select>
+    <div id="editTaskFormButtons">
+        <button class="button" type="submit">Update</button>
+        <button id="editTaskFormCancel" class="button" type="button">Cancel</button>
+    </div>
+</form>
+<div id="main-container">
+    <div id="header-container">
+        <a href="index.html">
+            <img src="TaskForge.svg" alt="Task Forge Logo" class="logo">
+            <h1>Task Forge</h1>
+        </a>
+    </div>
+    <div id="form-container">
+        <form id="createTaskForm" method="post">
+            <h3>Create Task</h3>
+            <input type="text" id="title" name="title" required="required" placeholder="Title.">
+
+            <textarea id="description" name="description" required="required" placeholder="Description."></textarea>
+
+            <input type="date" id="dueDate" name="dueDate" required="required">
+
+            <select id="status" name="status" required="required">
+                <option value="TODO">TODO</option>
+                <option value="IN_PROGRESS">IN_PROGRESS</option>
+                <option value="TESTING">TESTING</option>
+                <option value="COMPLETED">COMPLETED</option>
+            </select>
+
+            <button class="button" type="submit">Create</button>
+        </form>
+
+        <div id="settings-container">
+            <h3>Settings</h3>
+            <form id="settingsForm">
+                <label for="accentColor">Accent Color:</label>
+                <input type="color" id="accentColor" name="accentColor" value="#417081">
+
+                <label for="darkMode">Dark Mode:</label>
+                <input type="checkbox" id="darkMode" name="darkMode">
+
+                <!-- Add more settings here as needed -->
+
+                <button class="button" type="button" onclick="applySettings()">Apply</button>
+            </form>
+        </div>
+
+    </div>
+    <div id="tasks-container"></div>
 </div>
-<div id="form-container">
-    <form id="createTaskForm" method="post">
-        <h3>Create Task</h3>
-        <input type="text" id="title" name="title" required="required" placeholder="Title.">
-
-        <textarea id="description" name="description" required="required" placeholder="Description."></textarea>
-
-        <input type="date" id="dueDate" name="dueDate" required="required">
-
-        <select id="status" name="status" required="required">
-            <option value="TODO">TODO</option>
-            <option value="IN_PROGRESS">IN_PROGRESS</option>
-            <option value="TESTING">TESTING</option>
-            <option value="COMPLETED">COMPLETED</option>
-        </select>
-
-        <button class="create_button" type="submit">Create</button>
-    </form>
-</div>
-<div id="tasks-container"></div>
 <script src="script.js"></script>
 </body>
 </html>

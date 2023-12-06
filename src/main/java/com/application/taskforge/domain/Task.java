@@ -49,4 +49,8 @@ public class Task {
     public Long getTaskId() {
         return taskId;
     }
+
+    public void setTaskId(Long id) {
+        this.taskId = id;
+    }
 }
